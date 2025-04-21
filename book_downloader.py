@@ -13,11 +13,75 @@ search_box.send_keys(search_query)
 search_box.send_keys(Keys.RETURN) 
 
 
-table = driver.find_elements("xpath","/html/body/table[3]/tbody")
-for row in table:
-    print(row.text)
+table = driver.find_elements(By.CLASS_NAME,"c")
+rows = driver.find_elements(By.TAG_NAME, 'tr')
 
+i = 0
+j = 0
+for row in rows:
+    cols = row.find_elements(By.TAG_NAME,'td')
+    match j:
+        case 0:
+            j += 1
+            pass
+        case 1:
+            j += 1
+            pass
+        case 2:
+            j += 1
+            pass
 
+        case 3:
+            j += 1
+            pass
+        case 4:
+            j += 1
+            pass
+        case 5:
+            for col in cols[0:]:
+                match i:
+                    case 0:
+                        print("ID:")
+                        print(col.text)
+                        
+                    case 1:
+                        print("Author(s):")
+                        print(col.text)
+
+                    case 2:
+                        print("Title:")
+                        print(col.text)
+
+                    case 3:
+                        print("Publisher:")
+                        print(col.text)
+
+                    case 4:
+                        print("Year:")
+                        print(col.text)
+
+                    case 5:
+                        print("Pages")
+
+                        print(col.text)
+                    case 6:
+                        print("Language:")
+                        print(col.text)
+
+                    case 7:
+                        print("Size:")
+                        print(col.text)
+
+                    case 8:
+                        print("Extension:")
+                        print(col.text)
+
+                    case 11:
+                        i = 0
+                i += 1
+            # j+=1
+        case 6:
+                break
 input("Press any button to continue")
 
 driver.quit()
