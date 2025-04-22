@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+import time
+
 
 driver = webdriver.Chrome() 
 
@@ -18,8 +20,9 @@ rows = driver.find_elements(By.TAG_NAME, 'tr')
 
 i = 0
 j = 0
-for row in rows:
+for row in rows[:30]:
     cols = row.find_elements(By.TAG_NAME,'td')
+    i = 0
     match j:
         case 0:
             j += 1
@@ -77,9 +80,14 @@ for row in rows:
                         print(col.text)
 
                     case 11:
-                        i = 0
+                        pass
                 i += 1
+                print("")
             # j+=1
+            print("")
+            print("")
+            print("")
+            print("")
         case 6:
                 break
 input("Press any button to continue")
