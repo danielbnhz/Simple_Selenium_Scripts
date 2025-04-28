@@ -8,13 +8,13 @@ import time
 
 def start_driver():
     driver = webdriver.Chrome() 
-    driver.get("https://en.wikipedia.org/wiki/Main_Page")
+    driver.get("https://na.finalfantasyxiv.com/lodestone/playguide/db/")
     return driver
 def perform_search(driver):
     
     # search_box = driver.find_element(By.NAME, "search")  
     search_box = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.NAME, 'search'))
+        EC.element_to_be_clickable((By.ID, 'searchInput'))
     )
 
     search_query = input("What do you wish to search for? Input simple string:\n")
