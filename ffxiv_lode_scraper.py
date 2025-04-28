@@ -23,18 +23,26 @@ def perform_search(driver):
 
 
 
-# def parse_results(driver):
-#     table = driver.find_elements(By.CLASS_NAME,"c")
-#     rows = driver.find_elements(By.TAG_NAME, 'tr')
+def parse_results(driver):
+    table = driver.find_elements(By.CLASS_NAME,"db-table")
+    rows = driver.find_elements(By.TAG_NAME, 'tr')
+    for row in rows:
+        print(row.text)
 
 
 
 def main():
     try:
+        i = 1
         driver = start_driver()
         perform_search(driver)
-        # parse_results(driver)
-        input("Press any button to continue:\n")
+        parse_results(driver)
+        turn_page = input("Next page? y/n: \n")
+        while (turn_page=='y' or turn_page=='Y'):
+            driver.find_elements(By.CLASS_NAME,'active').click()
+            parse_results(driver)
+            i += 1
+            turn_page = input("Next page? y/n \n")
     finally:
         driver.quit()
 
