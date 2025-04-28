@@ -13,9 +13,8 @@ def start_driver():
 def perform_search(driver):
     
     # search_box = driver.find_element(By.NAME, "search")  
-    search_box = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, 'searchInput'))
-    )
+    search_boxes = driver.find_elements(By.NAME, 'q')
+    search_box = search_boxes[1]
 
     search_query = input("What do you wish to search for? Input simple string:\n")
     search_box.send_keys(search_query)  
